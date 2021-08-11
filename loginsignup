@@ -1,0 +1,75 @@
+try:
+	a = open("Sign.txt","a")
+except:
+	a = open("Sign.txt","a")
+x = int(input("WELCOME TO BOOK\nplzz select:\n1- Login\n2- Sign Up\nNo: "))
+if x == 2:
+	ch = int(input("1. without password or 2. with pass: "))
+	if ch == 1:
+		b = open("Sign.txt","r")
+		o = b.read()
+		y = input("UserName: ")
+		if y in o:
+			raise Exception("User Name already Present")
+		else:
+			a.write(y+'\n')
+		i = input("Emergency question: ")
+		a.write(i + '\n')
+		i_ans = input("Ans: ")
+		a.write(i_ans + '\n')
+	else:
+		b = open("Sign.txt","r")
+		o = b.read()
+		y = input("UserName: ")
+		if y in o:
+			raise Exception("User Name already Present")
+		else:
+			a.write(y+'\n')
+		z = input("Password: ")
+		a.write(z + '\n')
+		i = input("Emergency question: ")
+		a.write(i + '\n')
+		i_ans = input("Ans: ")
+		a.write(i_ans + '\n')
+else:
+	b = open("Sign.txt","r")
+	o = b.read()
+	ch = int(input("1. without password or 2. with pass: "))
+	if ch == 1:
+		yo = input("UserName: ")
+		c = open("Sign.txt","r")
+		r = c.readlines()
+		for i,y in enumerate(r):
+			if (yo + '\n') == y:
+				print(r[i + 1])
+				jk = input("Ans: ")
+				if r[i+2] == (jk + '\n'):
+					print("WELCOME TO hushiyari")				
+	else:
+		user = input("UserName: ")
+		password = input("Password: ")
+		if user+'\n'+password in o:
+			print("Welcome To hushiyari")
+		else:
+			print("Fuck Off, you are not in the list")
+			fp = input("Wanna Reset Your Password: y or n: ")
+			if fp.lower() == 'y':
+				yo = input("UserName: ")
+				c = open("Sign.txt","r")
+				r = c.readlines()
+				print(r)
+				for i,y in enumerate(r):
+					if (yo + '\n') == y:
+						print(r[i + 2])
+						jk = input("Ans: ")
+						if r[i+3] == (jk + '\n'):
+							pas = input("Enter new Pass: ")
+							z = r
+							print(type(z))
+							z[i+1] = pas + '\n'
+							print(z)
+							jl = open("Sign.txt","w")
+							jl.writelines(z)
+							break
+					else:
+						raise Exception("User Not Found")
